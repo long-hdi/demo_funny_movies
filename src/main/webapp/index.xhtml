@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="WEB-INF/template/master.xhtml">
+
+    <ui:define name="pageTitle">Home Page</ui:define>
+
+    <ui:define name="content">
+            <div class="ui-g-2"></div>
+            <div class="ui-g-8" id="videoList">
+                <p:dataScroller value="#{videoCreator.lazyDataModel}" var="v" lazy="true" chunkSize="10" mode="document" frameborder="0">
+                    <h:panelGrid columns="2">
+                        <p:outputPanel>
+                            <iframe width="352" height="198" src="https://www.youtube.com/embed/#{v.partnerId}" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen="allowfullscreen">
+                            </iframe>
+                        </p:outputPanel>
+                        <h:panelGrid columns="1">
+                            <h:outputText value="#{v.title}" styleClass="videoTitle"/>
+                            <h:outputText value="Shared by: #{v.user.email}" styleClass="author"/>
+                            <h:outputText value="Description: " styleClass="author"/>
+                            <p:scrollPanel style="height:120px" mode="native">
+                                <div class="author">#{v.description}</div>
+                            </p:scrollPanel>
+                        </h:panelGrid>
+                    </h:panelGrid>
+                </p:dataScroller>
+            </div>
+            <div class="ui-g-2"></div>
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                template="../WEB-INF/template/master.xhtml">
+
+    <ui:define name="pageTitle">Share Video Page</ui:define>
+
+    <ui:define name="content">
+        <div class="ui-g-4"></div>
+        <div class="ui-g-4">
+            <fieldset>
+                <legend>Share a movie</legend>
+                <h:form>
+                    <p:panelGrid styleClass="ui-noborder" id="submitUrlPanel">
+                        <p:row>
+                            <p:column>
+                                <h:outputLabel for="url" value="YouTube url: "/>
+                            </p:column>
+                            <p:column>
+                                <h:inputText id="url" value="#{videoCreator.url}"/>
+                            </p:column>
+                        </p:row>
+                        <p:column></p:column>
+                        <p:column>
+                            <p:commandButton update="url message" id="shareBtn" style="width: 100%" value="Share" action="#{videoCreator.create}"/>
+                        </p:column>
+                        <p:row>
+                            <p:column></p:column>
+                            <p:column><p:messages id="message"/></p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <p:blockUI block="submitUrlPanel" trigger="shareBtn" />
+                </h:form>
+            </fieldset>
+        </div>
+        <div class="ui-g-4"></div>
+    </ui:define>
+</ui:composition>

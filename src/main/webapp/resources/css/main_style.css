@@ -1,0 +1,12 @@
+
+.videoTitle {
+    color: darkred;
+}
+
+#loginControl {
+    list-style-type: none !important;
+}
+
+#loginControl li {
+    float: left !important;
+}
